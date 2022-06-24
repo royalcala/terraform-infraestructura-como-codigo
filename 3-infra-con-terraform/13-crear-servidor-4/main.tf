@@ -2,14 +2,14 @@
 # Define el provider de AWS
 # -------------------------
 provider "aws" {
-  region = "eu-west-1"
+  region = "us-west-2"
 }
 
 # ---------------------------------------
 # Define una instancia EC2 con AMI Ubuntu
 # ---------------------------------------
-resource "aws_instance" "mi_servidor" {
-  ami                    = "ami-0aef57767f5404a3c"
+resource "aws_instance" "my_server_one" {
+  ami                    = "ami-0d70546e43a941d70"
   instance_type          = "t2.micro"
   vpc_security_group_ids = [aws_security_group.mi_grupo_de_seguridad.id]
 

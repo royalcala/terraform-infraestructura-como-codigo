@@ -2,14 +2,18 @@
 # Define el provider de AWS
 # -------------------------
 provider "aws" {
-  region = "eu-west-1"
+  region = "us-west-2"
 }
 
 # ---------------------------------------
 # Define una instancia EC2 con AMI Ubuntu
 # ---------------------------------------
+#resource arguments (resource type, name)
 resource "aws_instance" "mi_servidor" {
-  ami                    = "ami-0aef57767f5404a3c"
+  #https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance#argument-reference
+  #https://us-east-1.console.aws.amazon.com/ec2/v2/home?region=us-east-1#LaunchInstances:
+
+  ami                    = "ami-0d70546e43a941d70"
   instance_type          = "t2.micro"
   vpc_security_group_ids = [aws_security_group.mi_grupo_de_seguridad.id]
 
@@ -40,3 +44,14 @@ resource "aws_security_group" "mi_grupo_de_seguridad" {
     protocol    = "TCP"
   }
 }
+
+#it will download all the plugins for example the provider
+#terraform init
+
+# it will see any changes that are required for your infrastructure
+#If you ever set or change modules or backend configuration for Terraform,
+#rerun this command to reinitialize your working directory
+#terraform plan
+
+
+#terraform destroy
